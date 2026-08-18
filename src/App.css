@@ -1,0 +1,21 @@
+ body{
+  background-color: rgb(133, 108, 75);
+ }
+ .nav{
+  background-color: black;
+ 
+ }
+ .nav ul{ 
+  display: flex;
+  justify-content: space-between;
+
+ }
+ .nav ul a{
+   color: floralwhite;
+   text-decoration: none;
+   
+ }
+ .nav ul a:hover{
+  padding: 5px;
+  color: green;
+ }

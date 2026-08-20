@@ -1,61 +1,34 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Nav from "./components/navBar";
+import Home from "./components/home";
+import About from "./components/about";
+import Skills from "./components/skills";
+import Projects from "./components/projects";
+import Education from "./components/educations.jsx";
+import Github from "./components/github";
+import Contact from "./components/contact";
+
+import "./App.css";
 
 function App() {
-
-    const [task, setTask] = useState("");
-    const [tasks, setTasks] = useState([]);
-
-    function addTodo() {
-
-        if (task.trim() === "") {
-            return;
-        }
-
-        setTasks([...tasks, task]);
-        setTask("");
-    }
-
-    function deleteTodo(index) {
-        setTasks(tasks.filter((todo, i) => i !== index));
-    }
-
     return (
-        <div>
+        <BrowserRouter basename="/reactPortfolio">
 
-            <h1>My Todo List</h1>
+            <Nav />
 
-            <input
-                type="text"
-                placeholder="Enter a task"
-                value={task}
-                onChange={(event) => setTask(event.target.value)}
-            />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/skills" element={<Skills />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/education" element={<Education />} />
+                <Route path="/github" element={<Github />} />
+                <Route path="/contact" element={<Contact />} />
+            </Routes>
 
-            <button onClick={addTodo}>
-                Add
-            </button>
-
-            <div>
-
-                {tasks.map((todo, index) => (
-
-                    <div key={index}>
-
-                        <span>{todo}</span>
-
-                        <button onClick={() => deleteTodo(index)}>
-                            Delete
-                        </button>
-
-                    </div>
-
-                ))}
-
-            </div>
-
-        </div>
+        </BrowserRouter>
     );
-  
 }
 
 export default App;
